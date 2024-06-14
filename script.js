@@ -30,7 +30,7 @@ const playGame = () => {
 
             // conditional state for play round including score and choices
             if (userChoice === computerChoice) {
-                console.log(`Draw! Try agian.`);
+                console.log(`Draw! Try again.`);
                 matchPlay++;
             } else if (
                 userChoice === 'rock' && computerChoice ==='scissor' ||
