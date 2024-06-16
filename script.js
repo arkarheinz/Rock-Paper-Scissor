@@ -1,54 +1,62 @@
-// getComputerChoice randomly return rock, paper, scissor
-
-const getComputerChoice = () => {
-    const computerChoice = Math.floor(Math.random() * 3);
-    if (computerChoice === 0) {
-        return 'rock';
-    } else if (computerChoice === 1) {
-        return 'paper';
-    } else if (computerChoice === 2) {
-        return 'scissor';
-    }
-};
-
-
+// get parent div
 const userChoice = document.querySelector("#userChoice");
-const playRound = document.querySelector("#playRound")
+//get playRound button
+const play = document.querySelector("#play")
 
+// click to start game
 playRound.addEventListener("click", () => {
-    // get user's input to play with computer
+
+    // getComputerChoice randomly return rock, paper, scissor
+    const getComputerChoice = () => {
+        const computerChoice = Math.floor(Math.random() * 3);
+        if (computerChoice === 0) {
+            return 'rock';
+        } else if (computerChoice === 1) {
+            return 'paper';
+        } else if (computerChoice === 2) {
+            return 'scissor';
+        }
+    };
+
+    // add buttons when its cliicked
     const userRock = document.createElement("button");
     const userPaper = document.createElement("button");
     const userScissor = document.createElement("button");
 
         // add attributes to buttons
         userRock.setAttribute("id", "rock");
-        userRock.textContent = "Rock";
+        userRock.innerHTML = '<img src="./icons/rock.gif" alt="paper.gif">';
 
         userPaper.setAttribute("id", "paper");
-        userPaper.textContent = "Paper";
+        userPaper.innerHTML = '<img src="./icons/paper.gif" alt="paper.gif">';
 
         userScissor.setAttribute("id", "scissor");
-        userScissor.textContent = "Scissor";
+        userScissor.innerHTML = '<img src="./icons/scissor.gif" alt="paper.gif">';
 
+    // append to parent userChoice div
     userChoice.appendChild(userRock);
     userChoice.appendChild(userPaper);
     userChoice.appendChild(userScissor);
+
+    // make userChoice when click
+    let getUserChoice = '';
+    // addEventListener to let user choose manually
+    userRock.addEventListener("click", () => {
+        getUserChoice = 'rock';
+        console.log(getUserChoice);
+    });
+
+    userPaper.addEventListener("click", () => {
+        getUserChoice = 'paper';
+        console.log(getUserChoice);
+    });
+
+    userScissor.addEventListener("click", () => {
+        getUserChoice = 'scissor';
+        console.log(getUserChoice);
+    });
 });
     
-// let getUserChoice = '';
-// // addEventListener to let user choose manually
-// userRock.addEventListener("click", () => {
-//     getUserChoice = 'rock';
-// });
-
-// userPaper.addEventListener("click", () => {
-//     getUserChoice = 'paper';
-// });
-
-// userScissor.addEventListener("click", () => {
-//     getUserChoice = 'scissor';
-// });
 
 // // function to play game
 // const playGame = () => {
