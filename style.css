@@ -45,7 +45,7 @@ p {
     font-family: "Handjet", sans-serif;
     font-optical-sizing: auto;
     color:#052A75;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .title h1 {
@@ -71,4 +71,58 @@ footer .contact {
 .contact a {
     text-decoration: none;
     color: #052A75;
+}
+
+#choiceText {
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+#rock, #paper, #scissor {
+    cursor: pointer;
+}
+
+#matchPlay {
+    margin: 30px 0px 10px 0px;
+    font-size: 40px;
+    font-family: "Londrina Solid", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    border-bottom: 5px solid transparent; /* Transparent initial border to avoid layout shift */
+    position: relative; /* Necessary for positioning the ::after element */
+}
+
+#matchPlay::after {
+    content: "";
+    display: block;
+    width: 120px; /* Fixed width of the line */
+    height: 5px;  /* Fixed height of the line */
+    background-color: #ec5252; /* Line color */
+    position: absolute; /* Position relative to #matchPlay */
+    bottom: 0; /* Position the line 10px below #matchPlay */
+    left: 50%; /* Center the line horizontally */
+    transform: translateX(-50%); /* Adjust to be exactly centered */
+}
+
+#score {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+#userScoreText, #computerScoreText {
+    font-size: 30px;
+}
+
+#userActualScore, #computerActualScore {
+    font-size: 100px;
+    background-color: #052A75;
+    color: #FFFDB6;
+}
+
+#line {
+    background-color: #052A75;
+    width: 5px;
+    height: 150px;
 }
