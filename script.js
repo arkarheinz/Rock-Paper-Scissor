@@ -72,21 +72,21 @@ play.addEventListener("click", () => {
         userChoice = "rock";
         game++;
         displayEnemyChoice();
-        playGame(userChoice);
+        playGame();
     });
 
     paper.addEventListener("click", () => {
         userChoice = "paper";
         game++;
         displayEnemyChoice();
-        playGame(userChoice);
+        playGame();
     });
 
     scissor.addEventListener("click", () => {
         userChoice = "scissor";
         game++;
         displayEnemyChoice();
-        playGame(userChoice);
+        playGame();
     });
     
     // function to display enemy choice
@@ -155,7 +155,7 @@ play.addEventListener("click", () => {
     enemyScoreDiv.appendChild(computerActualScore);
 
     // Function to decide winner
-    const playGame = (userChoice) => {
+    const playGame = () => {
         const computerWeapon = getComputerChoice();
         if (
             userChoice === "rock" && computerWeapon === "scissor" ||
@@ -172,3 +172,4 @@ play.addEventListener("click", () => {
         }
     }
 })
+
