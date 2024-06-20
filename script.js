@@ -23,6 +23,43 @@ let userScore = 0;
 let enemyScore = 0;
 let game = 0;
 
+// function to display enemy choice
+const displayEnemyChoice = () => {
+    const computerChoice = getComputerChoice();
+
+
+    // Check if enemyWeapon element already exists
+    let enemyWeapon = document.querySelector("#enemyWeapon");
+    if (enemyWeapon) {
+        // If it exists, update its content
+        enemyWeapon.textContent = `Enemy weapon: ${computerChoice}`;
+        } else {
+       // Otherwise, create a new enemyWeapon element
+       enemyWeapon = document.createElement("p");
+       enemyWeapon.setAttribute("id", "enemyWeapon");
+       enemyWeapon.textContent = `Enemy weapon: ${computerChoice}`;
+       gamePlay.appendChild(enemyWeapon);
+    }
+}
+
+// Function to decide winner
+const playGame = (userChoice, computerWeapon) => {
+    computerWeapon = getComputerChoice();
+    if (
+        userChoice === "rock" && computerWeapon === "scissor" ||
+        userChoice === "paper" && computerWeapon === "rock" ||
+        userChoice === "scissor" && computerWeapon === "paper"
+    ) {
+        userScore++;
+    } else if (
+        computerWeapon === "rock" && userChoice === "scissor" ||
+        computerWeapon === "paper" && userChoice === "rock" ||
+        computerWeapon === "scissor" && userChoice === "paper"
+    ) {
+        enemyScore++;
+    }
+}
+
 play.addEventListener("click", () => {
     //removing elements
     startGame.removeChild(removeOne);
@@ -72,41 +109,22 @@ play.addEventListener("click", () => {
         userChoice = "rock";
         game++;
         displayEnemyChoice();
-        playGame();
+        playGame(userChoice, computerWeapon);
     });
 
     paper.addEventListener("click", () => {
         userChoice = "paper";
         game++;
         displayEnemyChoice();
-        playGame();
+        playGame(userChoice, computerWeapon);
     });
 
     scissor.addEventListener("click", () => {
         userChoice = "scissor";
         game++;
         displayEnemyChoice();
-        playGame();
+        playGame(userChoice, computerWeapon);
     });
-    
-    // function to display enemy choice
-    const displayEnemyChoice = () => {
-        const computerChoice = getComputerChoice();
-
-
-        // Check if enemyWeapon element already exists
-        let enemyWeapon = document.querySelector("#enemyWeapon");
-        if (enemyWeapon) {
-            // If it exists, update its content
-            enemyWeapon.textContent = `Enemy weapon: ${computerChoice}`;
-            } else {
-           // Otherwise, create a new enemyWeapon element
-           enemyWeapon = document.createElement("p");
-           enemyWeapon.setAttribute("id", "enemyWeapon");
-           enemyWeapon.textContent = `Enemy weapon: ${computerChoice}`;
-           gamePlay.appendChild(enemyWeapon);
-        }
-    }
 
     const matchPlay = document.createElement("p");
     matchPlay.setAttribute("id", "matchPlay");
@@ -153,23 +171,5 @@ play.addEventListener("click", () => {
     computerActualScore.setAttribute("id", "computerActualScore");
     computerActualScore.textContent = `${enemyScore}`;
     enemyScoreDiv.appendChild(computerActualScore);
-
-    // Function to decide winner
-    const playGame = () => {
-        const computerWeapon = getComputerChoice();
-        if (
-            userChoice === "rock" && computerWeapon === "scissor" ||
-            userChoice === "paper" && computerWeapon === "rock" ||
-            userChoice === "scissor" && computerWeapon === "paper"
-        ) {
-            userScore++;
-        } else if (
-            computerWeapon === "rock" && userChoice === "scissor" ||
-            computerWeapon === "paper" && userChoice === "rock" ||
-            computerWeapon === "scissor" && userChoice === "paper"
-        ) {
-            enemyScore++;
-        }
-    }
 })
 
